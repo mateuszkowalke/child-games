@@ -54,9 +54,7 @@ const displayShapes = () => {
     .sort((_) => Math.random() - 0.5)
     .map((shape, i) => {
       return `
-            <div class="card" onclick="clickCard(event)" data-shapename="${
-              shape.name
-            }">
+            <div class="card" data-shapename="${shape.name}">
                 <div class="front">
                     ${i + 1}
                 </div>
@@ -68,6 +66,9 @@ const displayShapes = () => {
     })
     .join("");
   game.innerHTML = gameHTML;
+  Array.from(game.children).forEach((child) =>
+    child.addEventListener("click", clickCard)
+  );
 };
 
 const clickCard = (event: Event) => {
@@ -98,12 +99,12 @@ const clickCard = (event: Event) => {
     } else {
       matches++;
       if (matches === 8) {
-          // need settimeout here to let the animation finish first
-          // otherwise the alert blocks it
-          // 500ms because transition is set to 0.5s
-          setTimeout(() => {
-        alert("You win!");
-          }, 500)
+        // need settimeout here to let the animation finish first
+        // otherwise the alert blocks it
+        // 500ms because transition is set to 0.5s
+        setTimeout(() => {
+          alert("You win!");
+        }, 500);
       }
       firstPick = null;
       isPaused = false;
@@ -138,3 +139,5 @@ const resetButton = document.getElementById("resetButton");
 resetButton?.addEventListener("click", resetGame);
 
 resetGame();
+
+export {};
