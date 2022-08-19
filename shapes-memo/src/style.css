@@ -51,6 +51,21 @@ header {
     align-items: center;
 }
 
+.back {
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
 .rotated {
     transform: rotateY(180deg);
 }
+
+button {
+     font-size: 18px;
+     background-color: #c62828;
+     color: white;
+     border-radius: 5px;
+     border: none;
+     padding: 10px 20px;
+     cursor: pointer;
+ }
